@@ -1,0 +1,47 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+<style>
+#formtoggler {
+  display: none;
+  transition: .4s;
+}
+#formtoggler.show {/**/
+  display: block;
+}
+</style>
+
+<div id="formtoggler" class="container" style="background-color: #AEFFB3; border-radius: 3px; border: 1px solid #bbb; padding: 10px;">
+  <form method="POST" style = "background: #AEFFB3; border: 6px solid #AEFFB3; border-radius: 10px;">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="id_title">title:</label>
+      <input type="text" name="title" required="" id="id_title" class="w-100 form-control">
+    </div>
+    <div class="form-group">
+      <label for="id_description">description:</label>
+      <textarea name="description" cols="40" rows="8" required="" id="id_description" class="form-control"  style="max-height: 80px;"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="id_content">content:</label>
+      <textarea name="content" cols="40" rows="10" required="" id="id_content" class="form-control" style="max-height: 100px;"></textarea>
+    </div>
+    <input type="submit" value="Commit">
+  </form>
+</div>
+
+<h2>{{ title }}</h2>
+{% if user.is_authenticated %}
+<button class="btn btn-outline-default" id="btn-tgl" onclick="document.getElementById('formtoggler').classList.add('show')">+</button>
+{% endif %}
+<br>
+{% for post in posts %}
+<div class="blog-post card my-2">
+  <h2>{{ post.title }}</h2>
+  <span class="datestamp">{{ post.posted }}</span>
+  <p>{{ post.description }}</p>
+  <a class="btn btn-success" href="{% url 'blogpost' postnum=post.id %}" type="button"  style="width: 150px; margin-left: auto;">read</a>
+</div>
+{% endfor %}
+
+{% endblock %}

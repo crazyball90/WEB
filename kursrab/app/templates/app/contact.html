@@ -1,0 +1,28 @@
+{% extends "app/layout.html" %}
+{% block content %}
+
+{% if form != None %}
+  <form method="POST" class="bg-light p-3 rounded shadow">
+    <div class="form-row">
+    {% csrf_token %}
+    <label for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
+    {{ form.name }}
+    <label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+    {{ form.email }}
+    <label for="{{ form.message.id_for_label }}">{{ form.message.label }}</label>
+    {{ form.message }}
+    <input class="btn btn-primary mt-2" type="submit" value="submit">
+    </div>
+  </form>
+{% else %}
+  <div id="alert" class="alert alert-success" role="alert" onshow="setTimeout(() => { document.getElementById('alert').remove() }, 500)">
+    Your message was sent.
+  </div>
+  <ul class="list-group">
+    <li class="list-group-item"><strong>Name:</strong> {{ data.name }}</li>
+    <li class="list-group-item"><strong>E-mail:</strong> {{ data.email }}</li>
+    <li class="list-group-item"><strong>Message:</strong> {{ data.message }}</li>
+  </ul>
+{% endif %}
+
+{% endblock %}

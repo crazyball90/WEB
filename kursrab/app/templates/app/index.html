@@ -1,0 +1,103 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+{% load static %}
+<!--<div class="row my-4">
+  <h2>Latest releases</h2>
+</div>
+
+<!--<div class="row mb-4">
+  <div class="col-3">
+    <div class="shadow card" style="width: 100%;">
+      <img src="{% static 'app/img/album-art.jpg' %}" class="card-img-top" alt="album art">
+      <div class="card-body">
+        <h5 class="card-title">album title</h5>
+        <p class="card-text">by <a class="bandlink" href="#">bandname</a></p>
+        <!-- <a href="#" class="btn btn-outline-primary">release page</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-3">
+    <div class="card" style="width: 100%;">
+      <img src="{% static 'app/img/album-art.jpg' %}" class="card-img-top" alt="album art">
+      <div class="card-body">
+        <h5 class="card-title">album title</h5>
+        <p class="card-text">by <a class="bandlink" href="#">bandname</a></p>
+        <!-- <a href="#" class="btn btn-outline-primary">release page</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-3">
+    <div class="card" style="width: 100%;">
+      <img src="{% static 'app/img/album-art.jpg' %}" class="card-img-top" alt="album art">
+      <div class="card-body">
+        <h5 class="card-title">album title <span class="badge-ep">EP</span></h5>
+        <p class="card-text">by <a class="bandlink" href="#">bandname</a></p>
+        <!-- <a href="#" class="btn btn-outline-primary">release page</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-3">
+    <div class="card" style="width: 100%;">
+      <img src="{% static 'app/img/album-art.jpg' %}" class="card-img-top" alt="album art">
+      <div class="card-body">
+        <h5 class="card-title">album title</h5>
+        <p class="card-text"><a class="bandlink" href="#">bandname</a></p>
+        <!-- <a href="#" class="btn btn-outline-primary">release page</a>
+      </div>
+    </div>
+  </div>
+</div>-->
+        <div class="description" style = "background: #AEFFB3; border: 6px solid #AEFFB3; border-radius: 10px;">
+          <h1>The future is here</h1>
+          <hr class="my-4">
+          <p>HTC - description</p>
+          <p>Valve - description</p>
+          <p>Oculus - description</p>
+          <p>Sony - decription</p>
+          <hr class="my-4">
+          <div class="row mb-4">
+           <div class="col-3">
+             <div class="card bg-success" style="width: 100%;">
+               <img src="{% static 'app/img/htc_vive.jpg' %}" class="card-img-top" alt="htc vive">
+               <div class="card-body">
+                 <h5 class="card-title">htc VIVE</h5>
+                 <p class="card-text"><a class="btn btn-secondary" href="#">htc</a></p>
+              </div>
+             </div>
+            </div>
+
+             <div class="col-3">
+               <div class="card bg-success" style="width: 100%;">
+                 <img src="{% static 'app/img/Valve_Index.jpg' %}" class="card-img-top" alt="Valve_Index">
+                 <div class="card-body">
+                   <h5 class="card-title">Valve index</h5>
+                   <p class="card-text"><a class="btn btn-secondary" href="#">Valve</a></p>
+                 </div>
+               </div>
+              </div>
+
+               <div class="col-3">
+                 <div class="card bg-success" style="width: 100%;">
+                   <img src="{% static 'app/img/oculus_rift_s.jpg' %}" class="card-img-top" alt="ocucus rift s">
+                   <div class="card-body">
+                     <h5 class="card-title">Oculus Rift S</h5>
+                     <p class="card-text"><a class="btn btn-secondary" href="#">Facebook</a></p>
+                   </div>
+                 </div>
+                </div>
+
+                 <div class="col-3">
+                   <div class="card bg-success" style="width: 100%;">
+                     <img src="{% static 'app/img/psvr.jpg' %}" class="card-img-top" alt="PS VR">
+                     <div class="card-body">
+                       <h5 class="card-title">PlayStation VR</h5>
+                       <p class="card-text"><a class="btn btn-secondary" href="#">Sony</a></p>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+               <a class="btn btn-success btn-lg" href="/shop">see more</a>
+             </div>
+{% endblock %}

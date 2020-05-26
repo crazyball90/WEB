@@ -1,0 +1,38 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+<div class="post-bg"></div>
+<div class="jumbotron p-4">
+  <h1 class="display-4" style="font-weight: 500; color: #179067;"> {{ post.title }} </h1>
+  <p class="mb-2 mt-0" style="color: #888888; font-size: 14px;">{{ post.posted }}</p>
+  <p class="lead" style="color: #343a40;">{{ post.content|linebreaksbr }}</p>
+</div>
+
+{% if user.is_authenticated %}
+<div class="comment-form">
+<form method="POST">{% csrf_token %}
+    <div class="form-group" style="width: 90%; margin: auto;">
+      <label for="id_text">text:</label>
+      <!-- {{ form.text }} -->
+      <textarea name="text" cols="40" rows="5" required="" id="id_text"></textarea>
+    </div>
+    <button type="submit" class="save btn btn-success">send</button>
+</form>
+</div>
+{% else %}
+<h4 style="background-color: #fff; padding: 5px; border-radius: 3px; text-align: center;">log in for leave a comment</h4>
+{% endif %}
+
+{% for c in comments %}
+
+<div class="card" style="width: 80%; margin: 5px auto;">
+  <div class="card-body">
+    <h5 class="card-title" style="color: #179067!important;">{{ c.author }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted" style="color: #778899!important; font-size: 12px;">{{ c.date }}</h6>
+    <p class="card-text" style="color: #000!important;">{{ c.text|linebreaksbr }}</p>
+  </div>
+</div>
+
+{% endfor %}
+
+{% endblock %}

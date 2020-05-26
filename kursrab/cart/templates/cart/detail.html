@@ -1,0 +1,47 @@
+{% extends "app/layout.html" %}
+{% load static %}
+{% block title %}
+    Your shopping cart
+{% endblock %}
+{% block content %}
+
+<div class="row" style = "background: #AEFFB3; border: 6px solid #AEFFB3; border-radius: 10px;">
+    <div class="col-12"><h1>Products in cart</h1></div>
+    <div class="col-12">
+        <div class="row">
+            <div class="col-2">Image</div>
+            <div class="col-2">Product</div>
+            <div class="col-2">Number</div>
+            <div class="col-2">Remove</div>
+            <div class="col-2">Item price</div>
+            <div class="col-2">Price</div>
+        </div>
+        {% for item in cart %}
+        {% with product=item.product %}
+        <div class="row my-2 py-2" style="background:#AED1FF; border-radius: 8px;">
+            <div class="col-2">
+                <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "app/img/album-art.jpg" %}{% endif %}" width="100px">
+            </div>
+            <div class="col-2">{{ product.name }}</div>
+            <div class="col-2">{{ item.quantity }}</div>
+            <div class="col-2"><a class = " btn btn-danger" href="{% url "cart:cart_remove" product.id%}"><img src="https://img.icons8.com/android/50/000000/trash.png" alt="trash" width="20px"></a></div>
+            <div class="col-2">${{ item.price }}</div>
+            <div class="col-2">${{ item.total_price }}</div>
+        </div>
+        {% endwith %}
+        {% endfor %}
+    </div>
+    <div class="col-12">
+        <div class="row">
+            <div class="col-4"><p>Total: ${{ cart.get_total_price }}</p></div>
+            <div class="col-8">
+                <p class="text-right">
+                    <a href="{% url "shop:product_list" %}" class="btn btn-outline-primary">Continue shopping</a>
+                    <a href="{% url "order:order_create" %}" class="btn btn-success">$Buy</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

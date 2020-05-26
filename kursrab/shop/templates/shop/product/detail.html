@@ -1,0 +1,36 @@
+{% extends "app/layout.html" %}
+{% load static %}
+{% block title %}
+    {% if category %}{{ category.title }}{% else %}Products{% endif %}
+{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-3">
+      <img
+        src="{% if product.image %}{{ product.image.url }}{% else %}{% static "app/img/no_image.png"%}{% endif %}"
+        class="rounded mx-auto d-block"
+        alt="..."
+        style="width: 100%; padding: 2px; background-color: lightgray;">
+    </div>
+    <div class="col-9">
+        <h1>{{ product.name }}</h1>
+        <h2 style="color: gray;">by <a href="{{ product.category.get_absolute_url }}">{{ product.category }}</a></h2>
+        <hr>
+        <p class="price float-right">${{ product.price }}</p>
+        {% if user.is_authenticated %}
+        <form id="addtocart" action="{% url "cart:cart_add" product.id %}" method="post">
+            {{ cart_product_form }}
+            {% csrf_token %}
+            <input type="submit" value="Add to cart" style = "btn btn-success">
+        </form>
+        {% else %}
+        <a class="stretched-link" href="{% url 'login' %}">log in</a> to buy
+        {% endif %}
+    </div>
+    <div class="col-12 mt-4">
+        <h3>Description</h3>
+        <p>{{ product.description|linebreaks }}</p>
+    </div>
+</div>
+
+{% endblock %}
